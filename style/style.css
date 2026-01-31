@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Public Sans", sans-serif;
 }
 
 .header {
@@ -12,7 +13,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-family: "Public Sans", sans-serif;
+    position: relative;
+    z-index: 10;
+    background-color: whitesmoke;
 }
 
 .header nav ul {
@@ -39,7 +42,7 @@
 
 .hero-section {
     height: 680px;
-    width: 100vw;
+    width: 100%;
     background-image: url("https://www.fjallsakerhetsradet.se/49dffd/globalassets/mikrosajter/fjallsakerhetsradet/bilder/puffbilder/fjallvandring-mattias-fredriksson-5589-1920x1080.jpg");
     background-size: cover;
     display: flex;
@@ -48,10 +51,34 @@
     text-align: center;
 }
 
+/* adding filter */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
 .hero-content {
+    width: fit-content;
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 16px;
+    color: white;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+}
+
+.hero-content p {
+    margin-bottom: 16px;
 }
 
 .button-primary-xl {
