@@ -7,38 +7,68 @@
 
 .header {
     height: 72px;
-    width: 100vw;
-    padding: 12px 64px;
+    width: 100%;
     border-bottom: 1px solid rgb(212, 212, 212);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: relative;
     z-index: 10;
     background-color: whitesmoke;
     margin-bottom: 24px;
+    position: relative;
+}
+
+.header-content {
+    max-width: 1440px;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
 }
 
 .header nav ul {
     list-style: none;
     display: flex;
-    gap: 8px;
+    gap: 0px;
 }
 
 .header nav ul li {
     cursor: pointer;
     color: rgb(33, 33, 33);
     padding: 6px;
+    margin: 0 auto;
+    display: flex;
 }
 
-.header nav ul li i {
+.header nav ul li a {
+    text-decoration: none;
     color: rgb(33, 33, 33);
+    padding: 4px;
 }
 
-.header nav ul li:hover {
+.header nav ul li a:hover {
     transition: cubic-bezier(0.075, 0.82, 0.165, 1);
-
     opacity: 75%;
+}
+
+.icon-wrapper {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+.icon-wrapper svg {
+    width: 20px;
+    height: 20px;
+    color: rgb(33, 33, 33);
+    transition: all 0.3s ease-in-out;
+}
+
+.icon-wrapper:hover {
+    background-color: rgb(33, 33, 33, 0.1);
 }
 
 .hero-section {
