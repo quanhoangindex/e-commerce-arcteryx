@@ -210,4 +210,8 @@ body {
     .header-content {
         padding: 0px 16px;
     }
+
+    .hero-section {
+        height: 680px;
+    }
 }
