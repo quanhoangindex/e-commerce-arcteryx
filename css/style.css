@@ -235,6 +235,80 @@ footer {
     justify-content: center;
 }
 
+/* Products Page */
+.category-container {
+    width: 100%;
+    height: 200px;
+    background-image: url(https://www.base-mag.com/wp-content/uploads/2025/01/Sam-Firth_Arcteryx-Beta-SL-Jacket-6.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 12px 20px;
+}
+
+.category-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category-content h1 {
+    color: var(--color-white);
+    font-size: 24px;
+    margin-bottom: var(--spacing-xs);
+}
+
+.category-content p {
+    color: var(--color-background);
+    font-size: 12px;
+    padding-right: 64px;
+}
+
+.products-container {
+    width: 100%;
+    height: fit-content;
+    padding: var(--spacing-xs) var(--spacing-xs);
+    margin-bottom: 80px;
+}
+
+.products-wrapper {
+    width: 100%;
+    height: fit-content;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md) 0px;
+}
+.product-card {
+    padding: var(--spacing-xs) var(--spacing-xs);
+    border-radius: var(--radius-md);
+}
+
+.product-card:hover {
+    border: 1px solid rgb(193, 193, 193);
+}
+
+.product-card img {
+    width: 100%;
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin-bottom: var(--spacing-xs);
+}
+.product-card p {
+    font-size: 14px;
+    color: rgb(73, 73, 73);
+    margin-bottom: var(--spacing-sm);
+}
+
+.product-card .price {
+    font-weight: bold;
+    margin-bottom: var(--spacing-xs);
+}
+
 @media (min-width: 768px) {
     .header {
         height: 68px;
@@ -268,6 +342,32 @@ footer {
         gap: var(--spacing-md);
         margin-bottom: 64px;
     }
+
+    /* Products Page */
+    .category-container {
+        height: 250px;
+    }
+
+    .category-content h1 {
+        font-size: 28px;
+    }
+
+    .category-content p {
+        font-size: 14px;
+        padding-right: 200px;
+    }
+
+    .products-container {
+        padding: var(--spacing-sm) var(--spacing-sm);
+    }
+
+    .products-wrapper {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .product-card {
+        padding: var(--spacing-sm) var(--spacing-sm);
+    }
 }
 
 @media (min-width: 1440px) {
@@ -285,5 +385,62 @@ footer {
         grid-template-columns: repeat(2 1fr);
         gap: var(--spacing-md);
         margin-bottom: 64px;
+    }
+
+    /* Products Page */
+    .category-container {
+        height: 350px;
+        background-position: center;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .category-content {
+        max-width: 1440px;
+        height: 100%;
+        padding: var(--spacing-sm) var(--spacing-sm);
+    }
+
+    .category-content h1 {
+        font-size: 32px;
+    }
+
+    .category-content p {
+        width: 800px;
+        font-size: 16px;
+    }
+
+    .products-container {
+        max-width: 1440px;
+        height: fit-content;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: var(--spacing-md) 0px;
+        margin-bottom: 80px;
+    }
+
+    .products-wrapper {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .product-card {
+        padding: var(--spacing-sm) var(--spacing-sm);
+    }
+
+    .product-card h3 {
+        font-size: 20px;
+        margin-bottom: var(--spacing-xs);
+    }
+    .product-card p {
+        font-size: 16px;
+    }
+
+    .product-card .price {
+        font-size: 20px;
+        font-weight: bold;
     }
 }
