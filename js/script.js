@@ -102,6 +102,7 @@ const products = [
 
 function renderCategoryCards() {
     const wrapper = document.getElementById("category-section");
+    if (!wrapper) return; // debug multipage don't have this id
     wrapper.innerHTML = categoryCards
         .map(
             (categoryCard) => `
