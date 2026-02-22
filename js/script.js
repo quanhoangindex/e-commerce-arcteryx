@@ -1,3 +1,22 @@
+const categoryCards = [
+    {
+        backgroundImage:
+            "https://cdn.sanity.io/images/inkbj32c/production/7c56814dd837a3361ce61457df707f0a48cf307d-7680x4320.jpg?w=1920&h=1080&q=100&auto=format&dpr=1 1x, https://cdn.sanity.io/images/inkbj32c/production/7c56814dd837a3361ce61457df707f0a48cf307d-7680x4320.jpg?w=1920&h=1080&q=100&auto=format&dpr=2 2x",
+    },
+    {
+        backgroundImage:
+            "https://cdn.sanity.io/images/inkbj32c/production/5a35c40ddae680fee2b71a1ccb64675bf47cfe98-3840x2160.jpg?rect=674,0,2958,2160&w=953&h=696&q=100&auto=format&dpr=1 1x, https://cdn.sanity.io/images/inkbj32c/production/5a35c40ddae680fee2b71a1ccb64675bf47cfe98-3840x2160.jpg?rect=674,0,2958,2160&w=953&h=696&q=100&auto=format&dpr=2 2x",
+    },
+    {
+        backgroundImage:
+            "https://cdn.sanity.io/images/inkbj32c/production/a13807fae3946d82f7a0112f870cc124c09fce22-2160x2160.jpg?rect=0,291,2160,1578&w=953&h=696&q=75&auto=format&dpr=1 1x, https://cdn.sanity.io/images/inkbj32c/production/a13807fae3946d82f7a0112f870cc124c09fce22-2160x2160.jpg?rect=0,291,2160,1578&w=953&h=696&q=75&auto=format&dpr=2 2x",
+    },
+    {
+        backgroundImage:
+            "https://cdn.sanity.io/images/inkbj32c/production/043c6ece6f4c2c148aef51f308f078e4cfc7e025-1600x1225.jpg?rect=0,56,1600,1169&w=953&h=696&q=100&auto=format&dpr=1 1x, https://cdn.sanity.io/images/inkbj32c/production/043c6ece6f4c2c148aef51f308f078e4cfc7e025-1600x1225.jpg?rect=0,56,1600,1169&w=953&h=696&q=100&auto=format&dpr=2 2x",
+    },
+];
+
 const products = [
     {
         id: 1,
@@ -80,6 +99,26 @@ const products = [
         star: 4,
     },
 ];
+
+function renderCategoryCards() {
+    const wrapper = document.getElementById("category-section");
+    wrapper.innerHTML = categoryCards
+        .map(
+            (categoryCard) => `
+        <div class="category-card" style="background-image: url('${categoryCard.backgroundImage}')">
+                    <h2>The Norvan LD 4</h2>
+                    <p>
+                        Run any terrain with confidence in this highly
+                        responsive shoe.
+                    </p>
+                    <button class="button-primary-xl">Shop now</button>
+                </div>
+        `,
+        )
+        .join("");
+}
+
+renderCategoryCards();
 
 function renderProducts() {
     const wrapper = document.getElementById("products-wrapper");
