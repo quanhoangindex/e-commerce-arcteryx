@@ -40,22 +40,22 @@ const products = [
     },
     {
         id: 3,
-        name: "Vertex Speed Low Shoe",
+        name: "Aerios 5 Panel Cap",
         thumbnail:
-            "https://images-dynamic-arcteryx.imgix.net/details/1350x1710/S26-X000009716-Vertex-Speed-Low-Shoe-Luminary-Stratus-Women-s-Profile.jpg?auto=format%2Ccompress&q=70&fit=crop&fill=white&dpr=2.0000000298023224&ixlib=react-9.10.0",
+            "https://images-dynamic-arcteryx.imgix.net/details/1350x1710/F25-X000009489-Aerios-5-Panel-Cap-Forage-Olive-Moss-Front-View.jpg?auto=format&q=70&fit=crop&fill=white&max-w=1350&max-h=1710&ixlib=react-9.10.0&w=927",
         description:
-            "Low-profile running shoe designed to climb through technical vertical terrain.",
-        price: 2099,
+            "Fast-drying five-panel running hat with a quick-adjust shock cord closure.",
+        price: 849,
         star: 4,
     },
     {
         id: 4,
-        name: "Norvan LD 4 GTX Shoe",
+        name: "Bird Word Cap",
         thumbnail:
-            "https://images-dynamic-arcteryx.imgix.net/details/1350x1710/S26-X000010399-Norvan-LD-4-GTX-Shoe-Stratus-Stratus-Women-s-Profile.jpg?auto=format%2Ccompress&q=75&fill=white",
+            "https://images-dynamic-arcteryx.imgix.net/details/1350x1710/F25-X000009463-Bird-Word-Cap-Arctic-Silk-Glacial-Front-View.jpg?auto=format&q=70&fit=crop&fill=white&max-w=1350&max-h=1710&ixlib=react-9.10.0&w=594",
         description:
-            "Adaptable waterproof shoe for confidence on training and adventure runs.",
-        price: 2399,
+            "Adjustable, sweat-wicking six-panel ball cap for hikes and climbs.",
+        price: 599,
         star: 4,
     },
     {
@@ -119,14 +119,13 @@ function renderCategoryCards() {
         .join("");
 }
 
-renderCategoryCards();
-
 function renderProducts() {
     const wrapper = document.getElementById("products-wrapper");
+    if (!wrapper) return;
     wrapper.innerHTML = products
         .map(
             (product) => `
-                    <div class="product-card">
+                    <div class="product-card" onclick="openProduct(${product.id})">
                         <img
                             src="${product.thumbnail}"
                             alt="${product.name}" />
@@ -147,4 +146,66 @@ function renderProducts() {
     lucide.createIcons();
 }
 
+function openProduct(id) {
+    console.log(id);
+    localStorage.setItem("selectedProductId", id);
+    window.location.href = "product.html";
+}
+
+//product detail page
+function renderProductDetail() {
+    const selectedId = parseInt(localStorage.getItem("selectedProductId"));
+    console.log(selectedId);
+    let product;
+    for (let p of products) {
+        if (p.id === selectedId) {
+            product = p;
+            console.log(product);
+            break;
+        }
+    }
+
+    const wrapper = document.getElementById("product-detail");
+    const banner = document.getElementById("product-banner");
+    banner.innerHTML = `
+        <div class="product-banner-content">
+                    <p>Arc'teryx <span>></span> ${product.name}</p>
+         </div>
+    `;
+
+    if (!wrapper) return;
+    wrapper.innerHTML = `
+        <div class="product-wrapper">
+                    <div class="product-gallery">
+                        <img
+                            src="${product.thumbnail}"
+                            alt="" />
+                    </div>
+                    <div class="product-info">
+                        <h3 style="text-transform:uppercase">${product.name}</h3>
+                        <span>
+                            <i data-lucide="star" fill="currentColor"></i>
+                            <i data-lucide="star" fill="currentColor"></i>
+                            <i data-lucide="star" fill="currentColor"></i>
+                            <i data-lucide="star" fill="currentColor"></i>
+                            <i data-lucide="star"></i>
+                        </span>
+                        <p>
+                            ${product.description}
+                        </p>
+                        <hr />
+                        <span class="price">${product.price} <span>kr</span></span>
+                        <button class="button-primary-dark-xl">
+                            Add To Cart
+                        </button>
+                    </div>
+                </div>
+    `;
+}
+
+//cart page
+
+
+renderCategoryCards();
 renderProducts();
+renderProductDetail();
