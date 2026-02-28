@@ -112,7 +112,7 @@ function renderCategoryCards() {
                         Run any terrain with confidence in this highly
                         responsive shoe.
                     </p>
-                    <button class="button-primary-xl">Shop now</button>
+                    <button class="button-primary-xl"><a href="products.html" style="text-decoration:none;color:black">Shop now</a></button>
                 </div>
         `,
         )
