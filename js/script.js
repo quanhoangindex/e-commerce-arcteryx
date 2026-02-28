@@ -203,6 +203,9 @@ function renderProductDetail() {
     `;
 }
 
+//cart page
+
+
 renderCategoryCards();
 renderProducts();
 renderProductDetail();
