@@ -123,10 +123,11 @@ renderCategoryCards();
 
 function renderProducts() {
     const wrapper = document.getElementById("products-wrapper");
+    if (!wrapper) return;
     wrapper.innerHTML = products
         .map(
             (product) => `
-                    <div class="product-card">
+                    <div class="product-card" onclick="openProduct(${product.id})">
                         <img
                             src="${product.thumbnail}"
                             alt="${product.name}" />
@@ -145,6 +146,12 @@ function renderProducts() {
         )
         .join("");
     lucide.createIcons();
+}
+
+function openProduct(id) {
+    console.log(id);
+    localStorage.setItem("selectedProductId", id);
+    window.location.href = "product.html";
 }
 
 renderProducts();
