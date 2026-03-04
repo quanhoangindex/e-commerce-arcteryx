@@ -57,7 +57,7 @@ body {
 }
 
 .header-content > nav:nth-child(2) {
-    display: none;
+    font-size: 14px;
 }
 
 .header nav ul {
