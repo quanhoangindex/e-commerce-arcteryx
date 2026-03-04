@@ -238,6 +238,16 @@ function renderCart() {
     const wrapper = document.getElementById("cart-items");
     if (!wrapper) return;
 
+    //render empty cart
+    if (cart.length === 0) {
+        wrapper.innerHTML = `
+            <div class="cart-empty">
+                <p>You have no products in your cart</p>
+            </div>
+        `;
+        return;
+    }
+
     //render cart list
     wrapper.innerHTML = cart
         .map(
@@ -260,7 +270,7 @@ function renderCart() {
                                 <button><i data-lucide="plus"></i></button>
                             </div>
                             <div class="product-price">${product.price} kr</div>
-                            <div class="product-action">Remove</div>
+                            <div onclick="removeFromCart(${product.id})" class="product-action">Remove</div>
                         </div>
         `,
         )
@@ -302,7 +312,19 @@ function renderCart() {
     }
 }
 
+function removeFromCart(productId) {
+    console.log("click removed!" + productId);
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart = cart.filter(function (item) {
+        return item.id !== productId; //keep true value, remove false value
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart(); //update cart
+}
+
 renderCategoryCards();
 renderProducts();
 renderProductDetail();
 renderCart();
+removeFromCart();
