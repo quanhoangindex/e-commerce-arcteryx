@@ -274,7 +274,32 @@ function renderCart() {
     countingProduct.innerHTML = `(${counting})`;
 
     //render order summary
-    
+    const orderSummary = document.getElementById("order-summary");
+    if (orderSummary) {
+        let totalPrice = 0;
+        for (let product of cart) {
+            totalPrice = totalPrice + product.price;
+        }
+        orderSummary.innerHTML = `
+            <div class="order-wrapper-title">
+                            <h3>Order summary</h3>
+                        </div>
+                        <div class="order-detail">
+                            <div class="order-detail-subtotal">
+                                <p>Subtotal:</p>
+                                <p>${totalPrice} kr</p>
+                            </div>
+                            <div class="order-detail-shipping">
+                                <p>Shipping:</p>
+                                <p>Free</p>
+                            </div>
+                            <div class="order-detail-total">
+                                <p>Total:</p>
+                                <p>${totalPrice} kr</p>
+                            </div>
+            <div>
+        `;
+    }
 }
 
 renderCategoryCards();
