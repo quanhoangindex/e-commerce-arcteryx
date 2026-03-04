@@ -237,6 +237,8 @@ function renderCart() {
     console.log(cart);
     const wrapper = document.getElementById("cart-items");
     if (!wrapper) return;
+
+    //render cart list
     wrapper.innerHTML = cart
         .map(
             (product) =>
@@ -248,7 +250,7 @@ function renderCart() {
                                     alt="" />
                             </div>
                             <div class="cart-product-details">
-                                <h4>${product.name}}</h4>
+                                <h4>${product.name}</h4>
                                 <p>Category</p>
                                 <p>Ready to deliver</p>
                             </div>
@@ -263,6 +265,16 @@ function renderCart() {
         `,
         )
         .join("");
+    lucide.createIcons();
+
+    //render total
+    const counting = cart.length;
+    // console.log("number of product " + counting);
+    const countingProduct = document.getElementById("cart-total-product");
+    countingProduct.innerHTML = `(${counting})`;
+
+    //render order summary
+    
 }
 
 renderCategoryCards();
