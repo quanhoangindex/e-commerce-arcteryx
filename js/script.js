@@ -167,11 +167,14 @@ function renderProductDetail() {
 
     const wrapper = document.getElementById("product-detail");
     const banner = document.getElementById("product-banner");
-    banner.innerHTML = `
+
+    if (banner) {
+        banner.innerHTML = `
         <div class="product-banner-content">
                     <p>Arc'teryx <span>></span> ${product.name}</p>
          </div>
     `;
+    }
 
     if (!wrapper) return;
     wrapper.innerHTML = `
@@ -214,10 +217,55 @@ function renderProductDetail() {
     }
 }
 
-
-
 //cart page
+
+function addToCart(productId) {
+    const product = products.find(function (p) {
+        return p.id === productId;
+    });
+    // console.log(product);
+    if (!product) return;
+
+    let cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    cart.push(product); //add
+    localStorage.setItem("cart", JSON.stringify(cart)); //saves & convert
+    console.log("Added:", product.name);
+}
+
+function renderCart() {
+    const cart = JSON.parse(localStorage.getItem("cart") || "[]");
+    console.log(cart);
+    const wrapper = document.getElementById("cart-items");
+    if (!wrapper) return;
+    wrapper.innerHTML = cart
+        .map(
+            (product) =>
+                `
+            <div class="cart-body-product">
+                            <div class="cart-product-thumbnail">
+                                <img
+                                    src="${product.thumbnail}"
+                                    alt="" />
+                            </div>
+                            <div class="cart-product-details">
+                                <h4>${product.name}}</h4>
+                                <p>Category</p>
+                                <p>Ready to deliver</p>
+                            </div>
+                            <div class="product-quantity">
+                                <button><i data-lucide="minus"></i></button>
+                                <input type="number" value="1" />
+                                <button><i data-lucide="plus"></i></button>
+                            </div>
+                            <div class="product-price">${product.price} kr</div>
+                            <div class="product-action">Remove</div>
+                        </div>
+        `,
+        )
+        .join("");
+}
 
 renderCategoryCards();
 renderProducts();
 renderProductDetail();
+renderCart();
