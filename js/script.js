@@ -195,16 +195,28 @@ function renderProductDetail() {
                         </p>
                         <hr />
                         <span class="price">${product.price} <span>kr</span></span>
-                        <button class="button-primary-dark-xl">
+                        <button onclick = "addToCart(${product.id})" class="button-primary-dark-xl" id = "add-to-cart-btn">
                             Add To Cart
                         </button>
                     </div>
                 </div>
     `;
+
+    //feed back after add product to cart
+    const addButton = document.getElementById("add-to-cart-btn");
+    if (addButton) {
+        addButton.addEventListener("click", function () {
+            // console.log("Added");
+            this.innerHTML = "Added";
+            // return normal text
+            setTimeout(() => (this.innerHTML = "Add To Cart"), 2000);
+        });
+    }
 }
 
-//cart page
 
+
+//cart page
 
 renderCategoryCards();
 renderProducts();
